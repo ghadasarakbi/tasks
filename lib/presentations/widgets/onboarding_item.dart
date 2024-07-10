@@ -36,12 +36,12 @@ class OnboardingItem extends StatelessWidget {
         ),
         Positioned(
           child: Transform.translate(
-            offset: const Offset(0, 70),
+            offset: const Offset(0, 40),
             child: Center(
               child: Image.asset(
                 'assets/photos/title.png',
-                width: 150,
-                height: 200,
+                width: 130,
+                height: 150,
               ),
             ),
           ),

@@ -96,18 +96,26 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                     alignment: Alignment.center,
                     child: Text(
                       _currentPage == 2 ? 'تسجيل الدخول' : 'استمرار',
-                      style: const TextStyle(color: Colors.black),
+                      style: const TextStyle(
+                          color: Colors.black,
+                          fontSize: 12,
+                          fontFamily: 'co-arabic, sans-serif',
+                      ),
                     ),
                   ),
                 ),
                 if (_currentPage != 2)
                   Padding(
-                    padding: const EdgeInsets.only(right: 20.0), // Shift the button to the left
+                    padding: const EdgeInsets.only(right: 20.0),
                     child: TextButton(
                       onPressed: _skip,
                       child: const Text(
                         'تخطي',
-                        style: TextStyle(color: Color(0x80FFFFFF)),
+                        style: TextStyle(
+                            color: Color(0x80FFFFFF),
+                            fontSize: 12,
+
+                        ),
                       ),
                     ),
                   ),
@@ -133,12 +141,12 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
 
   Widget _buildDot(int index, int currentIndex) {
     return Container(
-      height: 10,
-      width: currentIndex == index ? 25 : 10,
+      height: 5,
+      width: currentIndex == index ? 31 : 5,
       margin: const EdgeInsets.only(right: 5),
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(20),
-        color: currentIndex == index ? Colors.white : Colors.grey,
+        borderRadius: BorderRadius.circular(80),
+        color: currentIndex == index ? Colors.white : const Color(0x80F6FAFD),
       ),
     );
   }
