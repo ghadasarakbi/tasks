@@ -39,47 +39,55 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: PageView(
-        controller: _pageController,
-        onPageChanged: _onPageChanged,
+      body: Stack(
         children: [
-          OnboardingPage(
-            description: "اسهل طريقة للبحث عن اخصائيين التفصيل",
-            imagePath: 'photos/photo1.jpeg',
-            onNext: _nextPage,
-            onSkip: _skip,
-            showButtons: true,
-            showLoginButton: false,
+          PageView(
+            controller: _pageController,
+            onPageChanged: _onPageChanged,
+            children: [
+              OnboardingPage(
+                description: "اسهل طريقة للبحث عن اخصائيين التفصيل",
+                imagePath: 'photos/photo1.jpeg',
+                onNext: _nextPage,
+                onSkip: _skip,
+                showButtons: true,
+                showLoginButton: false,
+              ),
+              OnboardingPage(
+                description: "فصل او خذ المقاسات وانت في مكانك",
+                imagePath: 'photos/photo2.jpeg',
+                onNext: _nextPage,
+                onSkip: _skip,
+                showButtons: true,
+                showLoginButton: false,
+              ),
+              OnboardingPage(
+                description: "امان تام ، ثقة وتعامل مضمون",
+                imagePath: 'photos/photo3.jpeg',
+                onNext: _nextPage,
+                onSkip: _skip,
+                showButtons: false,
+                showLoginButton: true,
+                onLogin: _login,
+              ),
+            ],
           ),
-          OnboardingPage(
-            description: "فصل او خذ المقاسات وانت في مكانك",
-            imagePath: 'photos/photo2.jpeg',
-            onNext: _nextPage,
-            onSkip: _skip,
-            showButtons: true,
-            showLoginButton: false,
-          ),
-          OnboardingPage(
-            description: "امان تام ، ثقة وتعامل مضمون",
-            imagePath: 'photos/photo3.jpeg',
-            onNext: _nextPage,
-            onSkip: _skip,
-            showButtons: false,
-            showLoginButton: true,
-            onLogin: _login,
+          Positioned(
+            bottom: 20,
+            left: 0,
+            right: 0,
+            child: Container(
+              height: 120,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: List.generate(
+                  3,
+                      (index) => _buildDot(index, _currentPage),
+                ),
+              ),
+            ),
           ),
         ],
-      ),
-      bottomNavigationBar: Container(
-        height: 60,
-        color: Colors.transparent,
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: List.generate(
-            3,
-                (index) => _buildDot(index, _currentPage),
-          ),
-        ),
       ),
     );
   }
@@ -91,7 +99,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
       margin: EdgeInsets.only(right: 5),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(20),
-        color: currentIndex == index ? Colors.orange[200] : Colors.grey,
+        color: currentIndex == index ? Colors.white : Colors.grey,
       ),
     );
   }
@@ -129,14 +137,14 @@ class OnboardingPage extends StatelessWidget {
           decoration: BoxDecoration(
             gradient: LinearGradient(
               colors: [
-                Color(0xC5A687).withOpacity(1),
-                Color(0xC5A687).withOpacity(0.6),
+                Color(0xFFC5A687).withOpacity(1),
+                Color(0xFFC5A687).withOpacity(0.6),
                 Colors.black.withOpacity(0.4),
                 Color(0xFFF2EFDC).withOpacity(0.0),
               ],
               begin: Alignment.bottomCenter,
               end: Alignment.topCenter,
-              stops: [0.0, 0.4,0.6, 1],
+              stops: [0.0, 0.4, 0.6, 1],
             ),
           ),
         ),
