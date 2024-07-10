@@ -27,11 +27,26 @@ class _SplashScreenState extends State<SplashScreen> {
             fit: BoxFit.cover,
           ),
         ),
-        child: Center(
-          child: Image.asset(
-            'photos/title.png',
-            width: 200,
-            height: 200,
+        child: Container(
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+              colors: [
+                Color(0xFFC5A687).withOpacity(1),
+                Color(0xFFC5A687).withOpacity(0.6),
+                Colors.black.withOpacity(0.4),
+                Color(0xFFF2EFDC).withOpacity(0.0),
+              ],
+              begin: Alignment.bottomCenter,
+              end: Alignment.topCenter,
+              stops: [0.0, 0.4, 0.6, 1],
+            ),
+          ),
+          child: Center(
+            child: Image.asset(
+              'photos/title.png',
+              width: 200,
+              height: 200,
+            ),
           ),
         ),
       ),
