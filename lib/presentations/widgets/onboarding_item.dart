@@ -5,7 +5,8 @@ class OnboardingItem extends StatelessWidget {
   final String imagePath;
   final int index;
 
-  const OnboardingItem({super.key,
+  const OnboardingItem({
+    super.key,
     required this.description,
     required this.imagePath,
     required this.index,
@@ -34,36 +35,37 @@ class OnboardingItem extends StatelessWidget {
           ),
         ),
         Positioned(
-    child: Transform.translate(
-    offset: const Offset(0, 70),
-          child: Center(
-            child: Image.asset(
-              'assets/photos/title.png',
-              width: 200,
-              height: 200,
+          child: Transform.translate(
+            offset: const Offset(0, 70),
+            child: Center(
+              child: Image.asset(
+                'assets/photos/title.png',
+                width: 150,
+                height: 200,
+              ),
             ),
           ),
         ),
-        ),
         Padding(
-          padding: const EdgeInsets.all(16.0),
+          padding: const EdgeInsets.all(40.04),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
-              const Spacer(),
+              const Spacer(flex: 4),
               Text(
                 description,
                 style: const TextStyle(
                   fontFamily: 'Co-Headline',
-                  fontWeight: FontWeight.w400,
-                  fontSize: 30,
+                  fontWeight: FontWeight.w700,
+                  fontSize: 40,
                   height: 52.35 / 30,
                   color: Colors.white,
                 ),
                 textAlign: TextAlign.right,
               ),
-              const SizedBox(height: 50),
+              const SizedBox(height: 2),
+              const Spacer(flex: 1),
             ],
           ),
         ),

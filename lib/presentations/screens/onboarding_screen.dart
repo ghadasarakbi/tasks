@@ -6,7 +6,9 @@ class OnboardingScreen extends StatefulWidget {
   const OnboardingScreen({super.key});
 
   @override
-  _OnboardingScreenState createState() => _OnboardingScreenState();
+  _OnboardingScreenState createState() {
+    return _OnboardingScreenState();
+  }
 }
 
 class _OnboardingScreenState extends State<OnboardingScreen> {
@@ -47,7 +49,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
           PageView(
             controller: _pageController,
             onPageChanged: _onPageChanged,
-            children: [
+            children: const [
               OnboardingItem(
                 description: "اسهل طريقة للبحث عن اخصائيين التفصيل",
                 imagePath: 'assets/photos/photo1.jpeg',
@@ -66,7 +68,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
             ],
           ),
           Positioned(
-            bottom: 20,
+            bottom: 70,
             left: 16,
             right: 16,
             child: Row(
@@ -79,7 +81,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                     foregroundColor: WidgetStateProperty.all<Color>(Colors.black),
                     shape: WidgetStateProperty.all<RoundedRectangleBorder>(
                       RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(30.0),
+                        borderRadius: BorderRadius.circular(100.0),
                       ),
                     ),
                     padding: WidgetStateProperty.all<EdgeInsets>(
@@ -88,24 +90,32 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                     elevation: WidgetStateProperty.all<double>(5),
                     shadowColor: WidgetStateProperty.all<Color>(Colors.black.withOpacity(0.5)),
                   ),
-                  child: Text(
-                    _currentPage == 2 ? 'تسجيل الدخول' : 'استمرار',
-                    style: const TextStyle(color: Colors.black),
+                  child: Container(
+                    width: 120,
+                    height: 30,
+                    alignment: Alignment.center,
+                    child: Text(
+                      _currentPage == 2 ? 'تسجيل الدخول' : 'استمرار',
+                      style: const TextStyle(color: Colors.black),
+                    ),
                   ),
                 ),
                 if (_currentPage != 2)
-                  TextButton(
-                    onPressed: _skip,
-                    child: const Text(
-                      'تخطي',
-                      style: TextStyle(color: Colors.white),
+                  Padding(
+                    padding: const EdgeInsets.only(right: 20.0), // Shift the button to the left
+                    child: TextButton(
+                      onPressed: _skip,
+                      child: const Text(
+                        'تخطي',
+                        style: TextStyle(color: Color(0x80FFFFFF)),
+                      ),
                     ),
                   ),
               ],
             ),
           ),
           Positioned(
-            bottom: 20,
+            bottom: 150,
             left: 0,
             right: 0,
             child: Row(
