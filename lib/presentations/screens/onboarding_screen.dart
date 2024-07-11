@@ -6,37 +6,37 @@ class OnboardingScreen extends StatefulWidget {
   const OnboardingScreen({super.key});
 
   @override
-  _OnboardingScreenState createState() {
-    return _OnboardingScreenState();
+  OnboardingScreenState createState() {
+    return OnboardingScreenState();
   }
 }
 
-class _OnboardingScreenState extends State<OnboardingScreen> {
-  final PageController _pageController = PageController();
-  int _currentPage = 0;
+class OnboardingScreenState extends State<OnboardingScreen> {
+  final PageController pageController = PageController();
+  int currentPage = 0;
 
-  void _onPageChanged(int page) {
+  void onPageChanged(int page) {
     setState(() {
-      _currentPage = page;
+      currentPage = page;
     });
   }
 
   void _nextPage() {
-    if (_currentPage < 2) {
-      _pageController.animateToPage(
-        _currentPage + 1,
+    if (currentPage < 2) {
+      pageController.animateToPage(
+        currentPage + 1,
         duration: const Duration(milliseconds: 300),
         curve: Curves.easeIn,
       );
     }
   }
 
-  void _skip() {
+  void skip() {
     Navigator.of(context).pushReplacement(
         MaterialPageRoute(builder: (context) => MainPage()));
   }
 
-  void _login() {
+  void login() {
     Navigator.of(context).pushReplacement(
         MaterialPageRoute(builder: (context) => MainPage()));
   }
@@ -47,8 +47,8 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
       body: Stack(
         children: [
           PageView(
-            controller: _pageController,
-            onPageChanged: _onPageChanged,
+            controller: pageController,
+            onPageChanged: onPageChanged,
             children: const [
               OnboardingItem(
                 description: "اسهل طريقة للبحث عن اخصائيين التفصيل",
@@ -75,7 +75,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 ElevatedButton(
-                  onPressed: _currentPage == 2 ? _login : _nextPage,
+                  onPressed: currentPage == 2 ? login : _nextPage,
                   style: ButtonStyle(
                     backgroundColor: WidgetStateProperty.all<Color>(Colors.white),
                     foregroundColor: WidgetStateProperty.all<Color>(Colors.black),
@@ -95,25 +95,28 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                     height: 30,
                     alignment: Alignment.center,
                     child: Text(
-                      _currentPage == 2 ? 'تسجيل الدخول' : 'استمرار',
+                      currentPage == 2 ? 'تسجيل الدخول' : 'استمرار',
                       style: const TextStyle(
                           color: Colors.black,
                           fontSize: 12,
-                          fontFamily: 'co-arabic, sans-serif',
+                          fontFamily: 'CoHeadline',
+                          fontWeight: FontWeight.w400,
                       ),
                     ),
                   ),
                 ),
-                if (_currentPage != 2)
+                if (currentPage != 2)
                   Padding(
                     padding: const EdgeInsets.only(right: 20.0),
                     child: TextButton(
-                      onPressed: _skip,
+                      onPressed: skip,
                       child: const Text(
                         'تخطي',
                         style: TextStyle(
+                            fontFamily: 'CoHeadline',
                             color: Color(0x80FFFFFF),
                             fontSize: 12,
+                            fontWeight: FontWeight.w400,
 
                         ),
                       ),
@@ -130,7 +133,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: List.generate(
                 3,
-                    (index) => _buildDot(index, _currentPage),
+                    (index) => buildDot(index, currentPage),
               ),
             ),
           ),
@@ -139,7 +142,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
     );
   }
 
-  Widget _buildDot(int index, int currentIndex) {
+  Widget buildDot(int index, int currentIndex) {
     return Container(
       height: 5,
       width: currentIndex == index ? 31 : 5,

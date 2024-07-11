@@ -5,12 +5,15 @@ class MainPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Main Page'),
+        title: const Text('Main Page'),
       ),
-      body: Center(
+      body: const Center(
         child: Text(
           'Welcome to the Main Page',
-          style: TextStyle(fontSize: 24),
+          style: TextStyle(
+              fontSize: 24,
+              fontFamily: 'CoHeadline',
+          ),
         ),
       ),
     );

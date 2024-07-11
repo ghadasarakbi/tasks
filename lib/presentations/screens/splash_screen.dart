@@ -4,16 +4,16 @@ import 'onboarding_screen.dart';
 
 class SplashScreen extends StatefulWidget {
   @override
-  _SplashScreenState createState() => _SplashScreenState();
+  SplashScreenState createState() => SplashScreenState();
 }
 
-class _SplashScreenState extends State<SplashScreen> {
+class SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     super.initState();
-    Timer(Duration(milliseconds: 1500), () {
+    Timer(const Duration(milliseconds: 1500), () {
       Navigator.of(context).pushReplacement(
-          MaterialPageRoute(builder: (context) => OnboardingScreen()));
+          MaterialPageRoute(builder: (context) => const OnboardingScreen()));
     });
   }
 
@@ -21,7 +21,7 @@ class _SplashScreenState extends State<SplashScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           image: DecorationImage(
             image: AssetImage('assets/photos/photo0.jpeg'),
             fit: BoxFit.cover,
@@ -31,12 +31,12 @@ class _SplashScreenState extends State<SplashScreen> {
           decoration: BoxDecoration(
             gradient: LinearGradient(
               colors: [
-                Color(0xFFC5A687).withOpacity(1),
-                Color(0xFFF2EFDC).withOpacity(0),
+                const Color(0xFFC5A687).withOpacity(1),
+                const Color(0xFFF2EFDC).withOpacity(0),
               ],
               begin: Alignment.bottomCenter,
               end: Alignment.topCenter,
-              stops: [0, 1],
+              stops: const [0, 1],
             ),
           ),
           child: Center(

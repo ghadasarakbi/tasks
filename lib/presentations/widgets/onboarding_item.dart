@@ -56,8 +56,8 @@ class OnboardingItem extends StatelessWidget {
               Text(
                 description,
                 style: const TextStyle(
-                  fontFamily: 'Co-Headline',
-                  fontWeight: FontWeight.w700,
+                  fontFamily: 'CoHeadline',
+                  fontWeight: FontWeight.w400,
                   fontSize: 40,
                   height: 52.35 / 30,
                   color: Colors.white,
