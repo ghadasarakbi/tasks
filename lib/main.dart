@@ -12,6 +12,7 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Onboarding',
       theme: ThemeData(
         primarySwatch: Colors.blue,
+        fontFamily: 'CoHeadline',
       ),
       home: SplashScreen(),
     );
