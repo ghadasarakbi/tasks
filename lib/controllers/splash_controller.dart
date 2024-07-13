@@ -8,6 +8,7 @@ import '../presentations/screens/main_screen.dart';
 class SplashController extends GetxController {
   var splashData = <SplashData>[].obs;
   var isLoading = true.obs;
+  var hasError = false.obs;
   var currentIndex = 0.obs;
 
   @override
@@ -18,19 +19,25 @@ class SplashController extends GetxController {
 
   void fetchSplashData() async {
     isLoading.value = true;
+    hasError.value = false;
     try {
       final response = await http.get(
         Uri.parse('https://admin.housemadecom.com/api/mobile/splash'),
-        headers: {'Accept-Language': 'ar'},
+        headers: {
+          'Accept-Language': 'ar',
+          'language': 'ar',
+        },
       );
 
       if (response.statusCode == 200) {
         var data = json.decode(response.body)['data'] as List;
         splashData.value = data.map((item) => SplashData.fromJson(item)).toList();
       } else {
+        hasError.value = true;
         Get.snackbar('Error', 'Failed to load data');
       }
     } catch (e) {
+      hasError.value = true;
       Get.snackbar('Error', 'Failed to load data');
     } finally {
       isLoading.value = false;
@@ -51,5 +58,9 @@ class SplashController extends GetxController {
 
   void skipToOnboarding() {
     Get.to(() => MainPage());
+  }
+
+  void retryFetchingData() {
+    fetchSplashData();
   }
 }

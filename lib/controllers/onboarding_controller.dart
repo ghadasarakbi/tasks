@@ -21,6 +21,5 @@ class OnboardingController extends GetxController {
 
   void login() {
 
-    print("Navigate to login screen");
   }
 }
