@@ -24,7 +24,6 @@ class SplashController extends GetxController {
       final response = await http.get(
         Uri.parse('https://admin.housemadecom.com/api/mobile/splash'),
         headers: {
-          'Accept-Language': 'ar',
           'language': 'ar',
         },
       );
@@ -56,7 +55,7 @@ class SplashController extends GetxController {
     }
   }
 
-  void skipToOnboarding() {
+  void skipToMain() {
     Get.to(() => MainPage());
   }
 

@@ -137,7 +137,7 @@ class SplashScreen extends StatelessWidget {
                     : Padding(
                         padding: const EdgeInsets.only(right: 20.0),
                         child: TextButton(
-                          onPressed: splashController.skipToOnboarding,
+                          onPressed: splashController.skipToMain,
                           child: const Text(
                             'تخطي',
                             style: TextStyle(
